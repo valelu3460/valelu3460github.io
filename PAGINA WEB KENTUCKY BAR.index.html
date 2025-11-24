@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kentucky Bar & Grill - Since 1920</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos Generales y Tipografía */
+        :root {
+            --color-principal: #2b6e22; /* Verde Oscuro (Texto principal, botones) */
+            --color-fondo: #fff; /* Fondo Blanco Suave (para el <body>) */
+            --color-acento: #0d8007; /* Verde Intenso (Líneas, enlaces, acentos) */
+            --color-header: #f0f0f0; /* Fondo del header, gris muy claro */
+        }
+
+        body {
+            font-family: 'Lora', serif; /* Texto del cuerpo */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: #000000;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Títulos */
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a8005; /* Tono de verde para títulos */
+        }
+        
+        /* 1. ESTILOS DEL HEADER Y NAVEGACIÓN */
+        header {
+            background-color:#f0f0f0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo-nombre {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #2cc071; /* Verde brillante para el logo */
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent; 
+        }
+
+        nav a:hover {
+            color: var(--color-acento);
+            border-bottom: 2px solid var(--color-acento);
+        }
+
+        /* 2. ESTILOS DEL CONTENEDOR PRINCIPAL (RECUAADROS DE CONTENIDO) */
+        .contenedor {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 30px;
+            /* COLOR DE FONDO VERDE PASTEL CLARO */
+            background-color: #e6f7e4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        /* ------------------------------------------- */
+        /* ESTILOS DEL SCROLL DE IMÁGENES (NUEVOS) */
+        /* ------------------------------------------- */
+        .imagen-scroll-wrapper {
+            display: flex; /* Coloca las imágenes una al lado de la otra */
+            gap: 15px; /* Espacio entre las imágenes */
+            overflow-x: scroll; /* Habilita el desplazamiento horizontal */
+            padding-bottom: 10px; /* Espacio para que no se oculte la barra de desplazamiento */
+            /* Agrega scroll-snap para un desplazamiento más limpio (opcional) */
+            scroll-snap-type: x mandatory; 
+        }
+        
+        .imagen-scroll-wrapper img {
+            width: 350px; 
+            height: 250px; 
+            object-fit: cover; /* Ajusta la imagen al tamaño sin deformarla */
+            flex-shrink: 0; /* Evita que las imágenes se encojan */
+            border-radius: 4px;
+            scroll-snap-align: start; /* Ayuda a que la imagen se detenga al inicio */
+        }
+
+        /* Opcional: Estilo para la barra de scroll en navegadores WebKit (Chrome, Safari) */
+        .imagen-scroll-wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .imagen-scroll-wrapper::-webkit-scrollbar-thumb {
+            background-color: rgba(13, 128, 7, 0.5); /* Verde semi-transparente */
+            border-radius: 10px;
+        }
+        
+        /* Eliminamos el estilo anterior de imagen-centrada si existía */
+        .imagen-centrada {
+            display: none; 
+        }
+
+        /* 3. ESTILOS DE HISTORIA (Color ligeramente diferente) */
+        #historia-margarita {
+            background-color: #f7ffef; /* Verde muy claro, casi blanco amarillento */
+            padding: 40px;
+            margin-top: 20px;
+            border-left: 5px solid var(--color-acento);
+        }
+        
+        #historia-margarita .historia-detalle {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .historia-detalle h3 {
+            color: var(--color-acento);
+            font-size: 1.6em;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .cita {
+            text-align: center;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+
+        /* 4. ESTILOS DE MENÚ */
+        #menu .categoria-menu {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid var(--color-acento);
+        }
+
+        .categoria-menu h3 {
+            text-align: left;
+            border-bottom: 1px dashed var(--color-acento);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        
+        .descripcion-plato {
+            font-size: 0.9em;
+            color: #4b4b4b;
+            margin-top: -10px;
+            margin-left: 20px;
+        }
+        
+        /* 5. ESTILOS DE OPINIONES */
+        .grid-opiniones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .opinion-tarjeta {
+            background-color: #f8fff8; /* Fondo blanco verdoso muy sutil */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--color-acento);
+            height: 100%;
+        }
+
+        .cita-opinion {
+            font-style: italic;
+            font-size: 1.1em;
+            color: #000000;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .autor-opinion {
+            font-weight: bold;
+            text-align: right;
+            color: var(--color-acento);
+            margin-top: 0;
+        }
+        
+        /* 6. ESTILOS DE CONTACTO Y RESERVACIÓN */
+        #contacto {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        #info-contacto, #form-reservacion {
+            flex: 1; 
+            padding: 20px;
+            border: 1px solid #0a8005;
+            border-radius: 4px;
+        }
+
+        #form-reservacion h3 {
+            text-align: left;
+            color: var(--color-acento);
+        }
+
+        #form-reservacion form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        #form-reservacion form label {
+            grid-column: 1 / -1; 
+            font-weight: bold;
+        }
+
+        #form-reservacion form input:not([type="submit"]),
+        #form-reservacion form select {
+            padding: 10px;
+            border: 1px solid #0a8005;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        #form-reservacion form button {
+            grid-column: 1 / -1; 
+            background-color: var(--color-principal);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        #form-reservacion form button:hover {
+            background-color: var(--color-acento);
+        }
+        
+        /* Media Query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            #contacto {
+                flex-direction: column;
+            }
+            #form-reservacion form {
+                grid-template-columns: 1fr; 
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <p class="logo-nombre">KENTUCKY&nbsp;</p>
+        <p style="margin: 5px 0 15px 0;">SINCE 1920&nbsp;</p>
+        
+        <nav>
+            <ul>
+                <li><a href="#historia-margarita">Historia</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#opiniones">Opiniones</a></li>
+                <li><a href="#contacto">Contacto & Reservas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="contenedor">
+        <div class="imagen-scroll-wrapper">
+        <img src="2c9da7y.jpg" width="640" height="447" alt=""/> 
+		<img src="image.jpg" width="400" height="225" alt=""/> 
+		<img src="Juarez-Margarita-ClubKentucky-cZabransky.jpg" width="554" height="400" alt=""/>
+		<img src="kentucky-club.jpg" width="1198" height="900" alt=""/> 
+		<img src="hq720.jpg" width="686" height="386" alt=""/> </div>
+        </div>
+
+    <section id="historia-margarita" class="contenedor">
+        <h2>Nuestra Historia</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
+          El Club Kentucky se fundó en la Avenida Juárez de Ciudad Juárez hace más de un siglo, abriendo sus puertas en octubre de 1920 bajo la propiedad de Francisco Montes. Su nacimiento coincidió con la Ley Seca en Estados Unidos, lo que impulsó la vida nocturna de Juárez, atrayendo a muchas personas de cruzar la frontera para beber
+        </p>
+        <img src="editorialtelevisa.brightspotcdn.png" width="1000" height="563" alt=""/class="imagen-centrada" style="display: block; max-width: 100%; margin: 20px auto; height: auto;">
+
+        <div class="historia-detalle">
+            <h3>La Leyenda de la Margarita</h3>
+            <p>El orgullo más grande del Kentucky Bar es ser la cuna de una de las bebidas más famosas del mundo: la margarita. Su creación se remonta a 1942, cuando Don Lorenzo Hernández, barman del lugar durante más de 50 años, preparó un cóctel especial para una pareja de clientes frecuentes.</p>
+            
+            <p>El esposo pidió una bebida que llevara los ingredientes favoritos de su esposa —tequila y limón— y que además tuviera su nombre. Así nació la margarita, una mezcla equilibrada de sabores que rápidamente se volvió un éxito entre los visitantes. Desde entonces, el cóctel se convirtió en símbolo del bar y de Ciudad Juárez. Su fama trascendió fronteras, siendo reconocido internacionalmente como un emblema mexicano.</p>
+            <img src="794bc001-9565-4121-80e5-162ed291bf59-600x398.jpg" width="600" height="398" alt=""/ class="imagen-centrada" style="display: block; max-width: 100%; margin: 20px auto; height: auto;">
+        </div>
+    </section>
+
+    <section id="menu" class="contenedor">
+      <h2>Nuestro Menú Exclusivo</h2>
+
+        <div class="categoria-menu">
+            <h3>Para Empezar </h3>
+            <p><strong>Alitas Kentucky(350gr)</strong> ..................................... $215.00</p>
+            <p class="descripcion-plato">Alitas empanizadas con una mezcla especial de la casa.</p>
+            
+            <p><strong>Alitas Buffalo (350gr)</strong> ............................ $205.00</p>
+            <p class="descripcion-plato">Bañadas en salsa Buffalo, BBQ, Pimienta-Limón.</p>
+            
+            <p><strong>Boneless (350gr)</strong> ............................ $205.00</p>
+            <p class="descripcion-plato">Original, Buffalo, BBQ.</p>
+        </div>
+
+        <div class="categoria-menu">
+            <h3>Platos Principales</h3>
+            <p><strong>Burritos (100)</strong> ................. $90.00</p>
+            <p class="descripcion-plato">Desebrada, Sirloin, Chile Relleno, Frijoles con queso.</p>
+            
+            <p><strong>Platos Mexicanos</strong> ................. $205.00</p>
+            <p class="descripcion-plato">Tacos de Desebrada, Enchilada, Chile Relleno, Frijoles Y Guacamole.</p>
+        </div>
+
+        <div class="categoria-menu">
+            <h3>Bebidas preparadas</h3>
+            <p><strong>Diablito 89ml</strong> .................................... $110.00</p>
+            <p class="descripcion-plato">Licor de pepino, jugo de piña, jugo de arándano, granadina y tabasco.</p>
+            
+            <p><strong>Paleta shot 30ml</strong> .................................... $110.00</p>
+            <p class="descripcion-plato">Tequila, licor de sandía, licor de fresa, jarabe natural, y tabasco.</p>
+            
+            <p><strong>Piedra Drink 89ml</strong> .................................... $110.00</p>
+            <p class="descripcion-plato">Tequila, Anís y Fernet.</p>
+            
+            <p><strong>Perro salado 147ml</strong> .................................... $110.00</p>
+            <p class="descripcion-plato">Vodka, Jugo de toronja y Limón.</p>
+        </div>
+</section>
+    
+    <section id="opiniones" class="contenedor">
+        <h2>Lo Que Dicen de Nosotros</h2>
+        
+        <div class="grid-opiniones">
+            
+            <div class="opinion-tarjeta">
+                <p class="cita-opinion">"Las mejores margaritas de la frontera más fabulosa y bella del mundo. El lugar muy contemporáneo y todo muy ameno siempre."</p>
+                <p class="autor-opinion">— Cory C</p>
+            </div>
+
+            <div class="opinion-tarjeta">
+                <p class="cita-opinion">"El lugar donde se originaron las margaritas. Obvio probé puras margaritas. La primera estuvo muy rica, el sabor exacto. El lugar en sí es agradable, un poco pequeño, pero muy buen servicio."</p>
+                <p class="autor-opinion">— jorgecabreraledezma</p>
+            </div>
+            
+            <div class="opinion-tarjeta">
+                <p class="cita-opinion">"Un buen lugar para disfrutar con amigos y familia, se ofrece comida y variedad de bebidas y sin duda alguna la número uno son las margaritas!!!"</p>
+                <p class="autor-opinion">— Alexandra</p>
+            </div>
+
+        </div>
+    </section>
+    
+    <section id="contacto" class="contenedor">
+        
+        <div id="info-contacto">
+            <h2>Información de Contacto</h2>
+            <p><strong>Dirección:</strong> Avenida Benito Juárez 629, Colonia Centro, 32000 Ciudad Juárez, Chihuahua, México.</p>
+            <p><strong>Teléfono:</strong> (656) 632 0208</p>
+            <p><strong>Horario:</strong> Lunes a Domingo de 11:00 am a 2:00 am</p>
+        </div>
+        
+        <div id="form-reservacion">
+            <h3>Reservación de Mesa</h3>
+            <form action="file:///D|/procesar_reserva.php" method="POST">
+                
+                <label for="res_nombre">Nombre Completo:</label>
+                <input type="text" id="res_nombre" name="nombre" required>
+
+                <label for="res_email">Correo Electrónico:</label>
+                <input type="email" id="res_email" name="email" required>
+
+                <label for="res_fecha">Fecha:</label>
+                <input type="date" id="res_fecha" name="fecha" required>
+
+                <label for="res_hora">Hora:</label>
+                <input type="time" id="res_hora" name="hora" required>
+
+                <label for="res_personas">Número de Personas:</label>
+                <input type="number" id="res_personas" name="personas" min="1" max="12" required>
+                
+                <button type="submit">Confirmar Reserva</button>
+            </form>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; background-color: var(--color-principal); color: white;">
+        <p>&copy;1920 KENTUCKY BAR Y GRILL. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
